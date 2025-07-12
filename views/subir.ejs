@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Subir Proyecto</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Subir Proyecto</h1>
+    <form action="/proyectos/subir" method="POST" enctype="multipart/form-data">
+      <input type="text" name="nombre" placeholder="Nombre del proyecto" required><br>
+      <input type="text" name="integrantes" placeholder="Integrantes" required><br>
+      <textarea name="descripcion" placeholder="Descripción" required></textarea><br>
+      <label>Imagen del proyecto</label>
+      <input type="file" name="imagen" required><br>
+      <label>Informe (PDF/DOCX)</label>
+      <input type="file" name="informe" required><br>
+      <button type="submit">Subir</button>
+    </form>
+  </div>
+</body>
+</html>

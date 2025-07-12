@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyectos IoT</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="sidebar">
+    <a href="/">Inicio</a>
+    <a href="/registrar">Registrarse</a>
+    <a href="/login">Iniciar Sesión</a>
+    <a href="/proyectos/subir">Subir Proyecto</a>
+  </div>
+  <div class="main-content">
+    <h1>Proyectos de IoT</h1>
+    <div class="grid">
+      <% proyectos.forEach(p => { %>
+        <div class="card">
+          <img src="/uploads/imagenes/<%= p.imagen %>" onerror="this.src='/img/default.png'" />
+          <h3><%= p.nombre %></h3>
+          <p><strong>Integrantes:</strong> <%= p.integrantes %></p>
+          <a href="/proyectos/<%= p.id %>">Ver más</a>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>

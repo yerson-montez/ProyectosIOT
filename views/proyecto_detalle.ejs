@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= proyecto.nombre %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/">⬅ Volver</a>
+    <h1><%= proyecto.nombre %></h1>
+
+    <div class="contenido-proyecto">
+      <img src="/uploads/imagenes/<%= proyecto.imagen %>" width="300" />
+
+      <div class="info-proyecto">
+        <p><strong>Integrantes:</strong> <%= proyecto.integrantes %></p>
+        <p><strong>Descripción:</strong> <%= proyecto.descripcion %></p>
+        <iframe src="/uploads/informes/<%= proyecto.informe %>" width="100%" height="400px"></iframe>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
