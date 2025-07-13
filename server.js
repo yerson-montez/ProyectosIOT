@@ -45,6 +45,7 @@ app.use(session({
 
 // Archivos estáticos
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use('/img', express.static(path.join(__dirname, 'public/img'))); // 👈 agrega esta línea
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Rutas

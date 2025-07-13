@@ -4,34 +4,42 @@
   <meta charset="UTF-8">
   <title>Proyectos IoT</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <!-- ENCABEZADO CON MENÚ HORIZONTAL -->
- <header class="header">
-  <div class="navbar">
-    <img src="/img/logo.jpg" alt="Logo" class="logo" />
-    <nav class="nav-links">
-      <a href="/">Inicio</a>
-      <a href="/registrar">Registrarse</a>
-      <a href="/login">Iniciar Sesión</a>
-      <a href="/proyectos/subir">Subir Proyecto</a>
-    </nav>
-  </div>
-</header>
-  <!-- CONTENIDO PRINCIPAL -->
-  <div class="main-content">
-    <h1>Proyectos de IoT</h1>
-    <div class="grid">
-      <% proyectos.forEach(p => { %>
-        <div class="card">
-          <img src="/uploads/imagenes/<%= p.imagen %>" onerror="this.src='/img/default.png'" />
-          <h3><%= p.nombre %></h3>
-          <p><strong>Integrantes:</strong> <%= p.integrantes %></p>
-          <a href="/proyectos/<%= p.id %>">Ver más</a>
-        </div>
-      <% }) %>
+  <header class="header">
+    <div class="navbar">
+      <img src="/img/logo.png" alt="Logo" class="logo" />
+      <nav class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/registrar">Registrarse</a>
+        <a href="/login">Iniciar Sesión</a>
+        <a href="/proyectos/subir">Subir Proyecto</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+    <h1>Proyectos de IoT</h1>
+
+    <% if (proyectos && proyectos.length > 0) { %>
+      <div class="grid">
+        <% proyectos.forEach(p => { %>
+          <div class="card">
+            <img class="card-img" src="/uploads/imagenes/<%= p.imagen %>" alt="Imagen del proyecto" onerror="this.src='/img/default.png'" />
+            <div class="card-body">
+              <h3><%= p.nombre %></h3>
+              <p><strong>Integrantes:</strong> <%= p.integrantes %></p>
+              <a href="/proyectos/<%= p.id %>" class="btn">Ver más</a>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p>No hay proyectos registrados aún.</p>
+    <% } %>
+  </main>
 </body>
 </html>
