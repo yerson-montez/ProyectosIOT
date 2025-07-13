@@ -4,43 +4,83 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* ENCABEZADO HORIZONTAL */
+.header {
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #444;
+  border-radius: 5px;
+}
+
+/* SIDEBAR VERTICAL (opcional, si aún la usas) */
 .sidebar {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 60px; /* desplazada por el header fijo */
   width: 180px;
-  height: 100%;
+  height: calc(100% - 60px);
   background: #2c3e50;
   padding-top: 20px;
 }
+
 .sidebar a {
   display: block;
   color: white;
   padding: 10px 15px;
   text-decoration: none;
 }
+
 .sidebar a:hover {
   background: #34495e;
 }
+
 .main-content {
   margin-left: 200px;
-  padding: 20px;
+  padding: 100px 20px 20px 20px; /* espacio superior extra por el header fijo */
 }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
+
 .card {
   background: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 .card img {
   width: 100%;
   border-radius: 5px;
 }
+
 .contenido-proyecto {
   display: flex;
   gap: 20px;
@@ -49,12 +89,61 @@ body {
 
 .contenido-proyecto img {
   max-width: 300px;
-  height: auto; /* Mantiene la proporción */
-  object-fit: contain; /* Evita que se recorte o deforme */
+  height: auto;
+  object-fit: contain;
   border-radius: 10px;
 }
 
-
 .info-proyecto {
   flex-grow: 1;
+}
+/* HEADER CON LOGO */
+.header {
+  background-color: #1a1a1a;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #444;
+  border-radius: 5px;
+}
+
+/* AJUSTES EXISTENTES */
+.main-content {
+  margin-left: 0; /* Quitamos el sidebar */
+  padding: 100px 40px 40px 40px; /* Espacio por header y más separación */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px; /* Mayor separación entre tarjetas */
 }
