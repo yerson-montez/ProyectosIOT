@@ -1,45 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Proyectos IoT</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Congreso de Proyectos IoT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0e6cfd8.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- ENCABEZADO CON MENÚ HORIZONTAL -->
+
+  <!-- ENCABEZADO -->
   <header class="header">
-    <div class="navbar">
-      <img src="/img/logo.png" alt="Logo" class="logo" />
+    <div class="navbar container">
+      <img src="/img/logo.png" alt="Logo del Congreso" class="logo" />
       <nav class="nav-links">
-        <a href="/">Inicio</a>
+        <a href="/index">Inicio</a>
         <a href="/registrar">Registrarse</a>
         <a href="/login">Iniciar Sesión</a>
-        <a href="/proyectos/subir">Subir Proyecto</a>
+        <a href="/proyectos/subir" class="btn-subir">Subir Proyecto</a>
       </nav>
     </div>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="main-content">
-    <h1>Proyectos de IoT</h1>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Congreso de Innovación IoT 2025</h1>
+      <p>Explora, aprende y conecta con los proyectos más innovadores de Internet de las Cosas</p>
+      <a href="/proyectos/subir" class="btn-hero">Participa Ahora</a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE PROYECTOS -->
+  <main class="main-content container">
+    <h2 class="section-title">Proyectos Destacados</h2>
 
     <% if (proyectos && proyectos.length > 0) { %>
       <div class="grid">
         <% proyectos.forEach(p => { %>
           <div class="card">
-            <img class="card-img" src="/uploads/imagenes/<%= p.imagen %>" alt="Imagen del proyecto" onerror="this.src='/img/default.png'" />
+            <div class="card-img-container">
+              <img class="card-img" src="/uploads/imagenes/<%= p.imagen %>" alt="Proyecto" onerror="this.src='/img/default.png'" />
+            </div>
             <div class="card-body">
               <h3><%= p.nombre %></h3>
               <p><strong>Integrantes:</strong> <%= p.integrantes %></p>
-              <a href="/proyectos/<%= p.id %>" class="btn">Ver más</a>
+              <a href="/proyectos/<%= p.id %>" class="btn-card">Ver más</a>
             </div>
           </div>
         <% }) %>
       </div>
     <% } else { %>
-      <p>No hay proyectos registrados aún.</p>
+      <p class="no-projects">No hay proyectos registrados aún.</p>
     <% } %>
   </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <div class="footer-container container">
+      <div class="footer-info">
+        <h4>Congreso IoT</h4>
+        <p>© 2025 Universidad Nacional. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/index">Inicio</a>
+        <a href="/contacto">Contacto</a>
+        <a href="/acerca">Acerca</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
