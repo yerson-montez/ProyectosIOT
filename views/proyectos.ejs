@@ -1,45 +1,240 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Proyectos IoT</title>
-  <link rel="stylesheet" href="/css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos IoT - Innovación y Tecnología</title>
+  <meta name="description" content="Descubre los mejores proyectos de Internet of Things (IoT) desarrollados por estudiantes y profesionales">
+  <meta name="keywords" content="IoT, Internet de las Cosas, proyectos, tecnología, innovación">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  
+  
+  
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- ENCABEZADO CON MENÚ HORIZONTAL -->
-  <header class="header">
-    <div class="navbar">
-      <img src="/img/logo.png" alt="Logo" class="logo" />
-      <nav class="nav-links">
-        <a href="/">Inicio</a>
-        <a href="/registrar">Registrarse</a>
-        <a href="/login">Iniciar Sesión</a>
-        <a href="/proyectos/subir">Subir Proyecto</a>
-      </nav>
+  <%- include('cabecera.ejs', { currentPage: 'home' }) %>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Proyectos de <span class="gradient-text">IoT</span>
+      </h1>
+      <p class="hero-subtitle">
+        Descubre proyectos innovadores del Internet de las Cosas desarrollados por estudiantes y profesionales
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <i class="fas fa-microchip"></i>
+          <span class="stat-number" id="totalProyectos"><%= proyectos ? proyectos.length : 0 %></span>
+          <span class="stat-label">Proyectos</span>
+        </div>
+        <div class="stat">
+          <i class="fas fa-users"></i>
+          <span class="stat-number">150+</span>
+          <span class="stat-label">Desarrolladores</span>
+        </div>
+        <div class="stat">
+          <i class="fas fa-award"></i>
+          <span class="stat-number">25</span>
+          <span class="stat-label">Categorías</span>
+        </div>
+      </div>
     </div>
-  </header>
+    <div class="hero-animation">
+      <div class="floating-card">
+        <i class="fas fa-wifi"></i>
+      </div>
+      <div class="floating-card">
+        <i class="fas fa-mobile-alt"></i>
+      </div>
+      <div class="floating-card">
+        <i class="fas fa-cloud"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTROS Y BÚSQUEDA -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters-container">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Buscar proyectos...">
+        </div>
+        
+        <div class="filter-options">
+          <button class="filter-btn active" data-filter="all">
+            <i class="fas fa-th"></i>
+            Todos
+          </button>
+          <button class="filter-btn" data-filter="arduino">
+            <i class="fab fa-arduino"></i>
+            Arduino
+          </button>
+          <button class="filter-btn" data-filter="raspberry">
+            <i class="fab fa-raspberry-pi"></i>
+            Raspberry Pi
+          </button>
+          <button class="filter-btn" data-filter="esp32">
+            <i class="fas fa-microchip"></i>
+            ESP32
+          </button>
+          <button class="filter-btn" data-filter="sensores">
+            <i class="fas fa-thermometer-half"></i>
+            Sensores
+          </button>
+        </div>
+        
+        <div class="sort-options">
+          <select id="sortSelect">
+            <option value="newest">Más recientes</option>
+            <option value="oldest">Más antiguos</option>
+            <option value="name">Por nombre</option>
+            <option value="popular">Más populares</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="main-content">
-    <h1>Proyectos de IoT</h1>
+    <div class="container">
+      <% if (proyectos && proyectos.length > 0) { %>
+        <!-- Grid de proyectos -->
+        <div class="projects-grid" id="projectsGrid">
+          <% proyectos.forEach((p, index) => { %>
+            <article class="project-card" data-category="<%= p.categoria || 'general' %>" data-name="<%= p.nombre.toLowerCase() %>">
+              <div class="card-image-container">
+                <img class="card-img" 
+                     src="/uploads/imagenes/<%= p.imagen %>" 
+                     alt="<%= p.nombre %>" 
+                     onerror="this.src='/img/default.png'"
+                     loading="lazy" />
+                <div class="card-overlay">
+                  <div class="card-actions">
+                    <button class="action-btn like-btn" data-id="<%= p.id %>">
+                      <i class="fas fa-heart"></i>
+                    </button>
+                    <button class="action-btn share-btn" data-id="<%= p.id %>">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="action-btn bookmark-btn" data-id="<%= p.id %>">
+                      <i class="fas fa-bookmark"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-badge">
+                  <i class="fas fa-microchip"></i>
+                  <%= p.categoria || 'IoT' %>
+                </div>
+              </div>
+              
+              <div class="card-body">
+                <div class="card-header">
+                  <h3 class="card-title"><%= p.nombre %></h3>
+                  <div class="card-rating">
+                    <% for(let i = 0; i < 5; i++) { %>
+                      <i class="fas fa-star <%= i < (p.rating || 4) ? 'active' : '' %>"></i>
+                    <% } %>
+                  </div>
+                </div>
+                
+                <p class="card-description">
+                  <%= p.descripcion ? p.descripcion.substring(0, 100) + '...' : 'Proyecto innovador de IoT' %>
+                </p>
+                
+                <div class="card-meta">
+                  <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span><%= p.integrantes %></span>
+                  </div>
+                  <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span><%= p.fecha ? new Date(p.fecha).toLocaleDateString('es-ES') : 'Reciente' %></span>
+                  </div>
+                </div>
+                
+                <div class="card-tags">
+                  <% if (p.tecnologias) { %>
+                    <% p.tecnologias.split(',').slice(0, 3).forEach(tech => { %>
+                      <span class="tag"><%= tech.trim() %></span>
+                    <% }) %>
+                  <% } else { %>
+                    <span class="tag">IoT</span>
+                    <span class="tag">Sensores</span>
+                  <% } %>
+                </div>
+                
+                <div class="card-footer">
+                  <div class="card-stats">
+                    <span class="stat-item">
+                      <i class="fas fa-heart"></i>
+                      <%= p.likes || Math.floor(Math.random() * 50) + 5 %>
+                    </span>
+                    <span class="stat-item">
+                      <i class="fas fa-eye"></i>
+                      <%= p.views || Math.floor(Math.random() * 200) + 50 %>
+                    </span>
+                  </div>
+                  
+                  <a href="/proyectos/<%= p.id %>" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    Ver Proyecto
+                  </a>
+                </div>
+              </div>
+            </article>
+          <% }) %>
+        </div>
 
-    <% if (proyectos && proyectos.length > 0) { %>
-      <div class="grid">
-        <% proyectos.forEach(p => { %>
-          <div class="card">
-            <img class="card-img" src="/uploads/imagenes/<%= p.imagen %>" alt="Imagen del proyecto" onerror="this.src='/img/default.png'" />
-            <div class="card-body">
-              <h3><%= p.nombre %></h3>
-              <p><strong>Integrantes:</strong> <%= p.integrantes %></p>
-              <a href="/proyectos/<%= p.id %>" class="btn">Ver más</a>
+        <!-- Paginación -->
+        <div class="pagination-container">
+          <div class="pagination">
+            <button class="pagination-btn" id="prevPage" disabled>
+              <i class="fas fa-chevron-left"></i>
+              Anterior
+            </button>
+            <div class="pagination-info">
+              Página <span id="currentPage">1</span> de <span id="totalPages">1</span>
             </div>
+            <button class="pagination-btn" id="nextPage">
+              Siguiente
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
-        <% }) %>
-      </div>
-    <% } else { %>
-      <p>No hay proyectos registrados aún.</p>
-    <% } %>
+        </div>
+      <% } else { %>
+        <!-- Estado vacío -->
+        <div class="empty-state">
+          <div class="empty-icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+          <h2>No hay proyectos disponibles</h2>
+          <p>¡Sé el primero en compartir tu proyecto de IoT!</p>
+          <a href="/proyectos/subir" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            Subir Primer Proyecto
+          </a>
+        </div>
+      <% } %>
+    </div>
   </main>
+
+  <%- include('pie.ejs') %>
+
+  <!-- Scripts -->
+  <script src="/js/app.js"></script>
 </body>
 </html>

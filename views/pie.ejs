@@ -1,0 +1,97 @@
+<!-- FOOTER -->
+<footer class="footer">
+    <link rel="stylesheet" href="/css/pie.css">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>IoT Projects</h4>
+        <p>Plataforma para compartir y descubrir proyectos innovadores del Internet de las Cosas.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/proyectos">Proyectos</a></li>
+          <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="/categoria/arduino">Arduino</a></li>
+          <li><a href="/categoria/raspberry">Raspberry Pi</a></li>
+          <li><a href="/categoria/esp32">ESP32</a></li>
+          <li><a href="/categoria/sensores">Sensores</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="/documentacion">Documentación</a></li>
+          <li><a href="/tutoriales">Tutoriales</a></li>
+          <li><a href="/api">API</a></li>
+          <li><a href="/ayuda">Ayuda</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 IoT Projects. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="/privacidad">Política de Privacidad</a>
+        <a href="/terminos">Términos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODALES -->
+<!-- Modal de compartir -->
+<div class="modal" id="shareModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Compartir Proyecto</h3>
+      <button class="modal-close" onclick="closeModal('shareModal')">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="share-options">
+        <button class="share-btn" data-platform="facebook">
+          <i class="fab fa-facebook"></i>
+          Facebook
+        </button>
+        <button class="share-btn" data-platform="twitter">
+          <i class="fab fa-twitter"></i>
+          Twitter
+        </button>
+        <button class="share-btn" data-platform="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+        </button>
+        <button class="share-btn" data-platform="copy">
+          <i class="fas fa-copy"></i>
+          Copiar enlace
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Botón scroll to top -->
+<button class="scroll-top" id="scrollTop">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- Notificaciones toast -->
+<div class="toast-container" id="toastContainer"></div>

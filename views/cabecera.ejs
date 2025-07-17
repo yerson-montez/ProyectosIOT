@@ -1,0 +1,38 @@
+<!-- HEADER CON NAVEGACIÓN -->
+<header class="header">
+    <link rel="stylesheet" href="/css/cabecera.css">
+  <div class="navbar">
+    <div class="logo-container">
+      <img src="/img/logo.png" alt="Logo IoT Projects" class="logo" />
+      <span class="logo-text">IoT Projects</span>
+    </div>
+    
+    <nav class="nav-links" id="navLinks">
+      <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="/proyectos" class="nav-link <%= currentPage === 'projects' ? 'active' : '' %>">
+        <i class="fas fa-folder-open"></i>
+        <span>Proyectos</span>
+      </a>
+      <a href="/registrar" class="nav-link <%= currentPage === 'register' ? 'active' : '' %>">
+        <i class="fas fa-user-plus"></i>
+        <span>Registrarse</span>
+      </a>
+      <a href="/login" class="nav-link <%= currentPage === 'login' ? 'active' : '' %>">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>Iniciar Sesión</span>
+      </a>
+      <a href="/proyectos/subir" class="nav-link btn-primary">
+        <i class="fas fa-plus"></i>
+        <span>Subir Proyecto</span>
+      </a>
+    </nav>
+    
+    <!-- Botón menú móvil -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
