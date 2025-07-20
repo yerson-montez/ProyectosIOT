@@ -1,3 +1,21 @@
+/* ===== HEADER FIX ===== */
+:root {
+  --header-height: 60px; /* Ajusta este valor a la altura real de tu header */
+}
+
+header {
+  position: fixed; /* Asegura que el header permanezca fijo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+}
+
+body {
+  padding-top: var(--header-height); /* Desplaza el contenido hacia abajo */
+}
+
 /* ===== RESET Y VARIABLES ===== */
 * {
   margin: 0;

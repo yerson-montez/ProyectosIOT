@@ -1,5 +1,5 @@
 body {
-  background: #f4f6f9;
+  background: #1C2533;
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@ body {
 .form-container {
   max-width: 600px;
   margin: 50px auto;
-  background: #fff;
+  background: #2B4F91;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
